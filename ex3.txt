@@ -1,0 +1,150 @@
+SQL> CUST_NO VARCHAR2(15),
+SP2-0734: unknown command beginning "CUST_NO VA..." - rest of line ignored.
+SQL> CREATE TABLE CUST_MASTER(
+  2  CUST_NO VARCHAR2(15),
+  3  CUST_NAME VARCHAR2(15),
+  4  ADDRESS1 VARCHAR2(15),
+  5  ADDRESS2 VARCHAR2(15),
+  6  CITY VARCHAR2(15),
+  7  STATE VARCHAR2(15),
+  8  PH_NO VARCHAR2(10)
+  9  );
+
+Table created.
+
+
+SQL> INSERT INTO CUST_MASTER VALUES('C1','PRIYA','RINGROAD','PUJA PARK','AHEMDABAD','GUJARAT','8989878548');
+
+1 row created.
+
+SQL> INSERT INTO CUST_MASTER VALUES('C2','PUJA','LAJPAT NAGER','SHYAMAL COLONY','BANARAS','UP','7898456213');
+
+1 row created.
+
+SQL> INSERT INTO CUST_MASTER VALUES('C3','ANKIT','BORIVALI','PANCHAYAT NAGER','MUMBAI','DELHI','788598451');
+
+1 row created.
+
+SQL> INSERT INTO CUST_MASTER VALUES('C4','RAVI','VAJDIROAD','NANDBHOOMI','MUMBAI','DELHI','788598451');
+
+1 row created.
+
+SQL> INSERT INTO CUST_MASTER VALUES('C5','ALPHA','JAMANAGAR ROAD','RAILWAY COLONY','AHEMDABAD','GUJARAT','7465241589');
+
+1 row created.
+
+SQL> SELECT * FROM CUST_MASTER;
+
+CUST_NO         CUST_NAME       ADDRESS1        ADDRESS2        CITY            
+--------------- --------------- --------------- --------------- --------------- 
+STATE           PH_NO                                                           
+--------------- ----------                                                      
+C1              PRIYA           RINGROAD        PUJA PARK       AHEMDABAD       
+GUJARAT         8989878548                                                      
+                                                                                
+C2              PUJA            LAJPAT NAGER    SHYAMAL COLONY  BANARAS         
+UP              7898456213                                                      
+                                                                                
+C3              ANKIT           BORIVALI        PANCHAYAT NAGER MUMBAI          
+DELHI           788598451                                                       
+                                                                                
+
+CUST_NO         CUST_NAME       ADDRESS1        ADDRESS2        CITY            
+--------------- --------------- --------------- --------------- --------------- 
+STATE           PH_NO                                                           
+--------------- ----------                                                      
+C4              RAVI            VAJDIROAD       NANDBHOOMI      MUMBAI          
+DELHI           788598451                                                       
+                                                                                
+C5              ALPHA           JAMANAGAR ROAD  RAILWAY COLONY  AHEMDABAD       
+GUJARAT         7465241589                                                      
+                                                                                
+
+SQL> SELECT * FROM CUST_MASTER
+  2  WHERE STATE = 'GUJARAT';
+
+CUST_NO         CUST_NAME       ADDRESS1        ADDRESS2        CITY            
+--------------- --------------- --------------- --------------- --------------- 
+STATE           PH_NO                                                           
+--------------- ----------                                                      
+C1              PRIYA           RINGROAD        PUJA PARK       AHEMDABAD       
+GUJARAT         8989878548                                                      
+                                                                                
+C5              ALPHA           JAMANAGAR ROAD  RAILWAY COLONY  AHEMDABAD       
+GUJARAT         7465241589                                                      
+                                                                                
+
+SQL> SELECT * FROM CUST_MASTER
+  2  ORDER BY CUST_NAME;
+
+CUST_NO         CUST_NAME       ADDRESS1        ADDRESS2        CITY            
+--------------- --------------- --------------- --------------- --------------- 
+STATE           PH_NO                                                           
+--------------- ----------                                                      
+C5              ALPHA           JAMANAGAR ROAD  RAILWAY COLONY  AHEMDABAD       
+GUJARAT         7465241589                                                      
+                                                                                
+C3              ANKIT           BORIVALI        PANCHAYAT NAGER MUMBAI          
+DELHI           788598451                                                       
+                                                                                
+C1              PRIYA           RINGROAD        PUJA PARK       AHEMDABAD       
+GUJARAT         8989878548                                                      
+                                                                                
+
+CUST_NO         CUST_NAME       ADDRESS1        ADDRESS2        CITY            
+--------------- --------------- --------------- --------------- --------------- 
+STATE           PH_NO                                                           
+--------------- ----------                                                      
+C2              PUJA            LAJPAT NAGER    SHYAMAL COLONY  BANARAS         
+UP              7898456213                                                      
+                                                                                
+C4              RAVI            VAJDIROAD       NANDBHOOMI      MUMBAI          
+DELHI           788598451                                                       
+                                                                                
+
+SQL> SELECT DISTINCT CITY FROM CUST_MASTER;
+
+CITY                                                                            
+---------------                                                                 
+AHEMDABAD                                                                       
+MUMBAI                                                                          
+BANARAS                                                                        
+
+
+SQL> SET ADDRESS1 = 'CG ROAD'
+SP2-0158: unknown SET option "ADDRESS1"
+SQL> UPDATE CUST_MASTER
+  2  SET ADDRESS1 = 'CG ROAD'
+  3  WHERE CUST_NAME = 'PRIYA';
+
+1 row updated.
+
+SQL> SELECT CITY FROM CUST_MASTER
+  2  WHERE STATE = 'GUJARAT';
+
+CITY                                                                            
+---------------                                                                 
+AHEMDABAD                                                                       
+AHEMDABAD                                                                       
+
+SQL> ALTER TABLE CUST_MASTER
+  2  ADD PIN_CODE VARCHAR(10);
+
+Table altered. 
+
+
+SQL> DELETE FROM CUST_MASTER
+  2  WHERE PH_NO = '7895452034';
+
+0 rows deleted.
+
+SQL> ALTER TABLE CUST_MASTER
+  2  RENAME TO CUSTOMER_DETAIL;
+
+Table altered.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
