@@ -1,5 +1,3 @@
-SQL> CUST_NO VARCHAR2(15),
-SP2-0734: unknown command beginning "CUST_NO VA..." - rest of line ignored.
 SQL> CREATE TABLE CUST_MASTER(
   2  CUST_NO VARCHAR2(15),
   3  CUST_NAME VARCHAR2(15),
@@ -148,3 +146,4 @@ SQL> COMMIT;
 Commit complete.
 
 SQL> SPOOL OFF;
+
